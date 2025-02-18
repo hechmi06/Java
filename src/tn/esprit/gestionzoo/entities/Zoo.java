@@ -1,16 +1,23 @@
-public class Zoo {
-    Animal[] animals = new Animal[25];
-    String name;
-    String city;
-    final int NBR_CAGES = 25;
+package tn.esprit.gestionzoo.entities;
 
-    Zoo(){}
-    Zoo(String name,String city,int nbrCages){
+public class Zoo {
+    private Animal[] animals = new Animal[25];
+    private String name;
+    private String city;
+    private final int NBR_CAGES = 25;
+
+    public Zoo(){}
+    public Zoo(String name,String city){
         this.name = name ;
         this.city = city ;
         this.animals = new Animal[NBR_CAGES];
     }
-    void displayZoo(){
+    public void setName(String name){
+        while(name.equals("")){
+            this.name = name ;
+        }
+    }
+    public void displayZoo(){
         System.out.println(name + " " + city + " " + NBR_CAGES);
         for(int i = 0; i < animals.length; i++){
             if (animals[i] != null){
@@ -23,19 +30,21 @@ public class Zoo {
 
     }
     public boolean addAnimal(Animal animal){
-        for (int i=0 ; i< NBR_CAGES ; i++){
-            if(animals[i] ==null){
-                if(searchAnimal(animal)==-1) {
-                    animals[i] = animal;
+        for (int i=0 ; i< NBR_CAGES ; i++) {
+            if (isZooFull()==false) {
+                if (animals[i] == null) {
+                    if (searchAnimal(animal) == -1) {
+                        animals[i] = animal;
+                    }
+                    return true;
                 }
-                return true;
             }
         }
         return false;
     }
     public int searchAnimal(Animal animal){
         for (int i=0 ; i<NBR_CAGES ; i++){
-            if(animals[i]==animal){
+            if(animals[i]!=null && animals[i].getName().equals(animal.getName())){
                 return i;
             }
         }
