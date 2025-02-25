@@ -6,10 +6,11 @@ public class Animal {
     protected int age;
     protected boolean isMammal;
 
-    public Animal(){}
+    public Animal() {}
+
     public Animal(String family, String name, int age, boolean isMammal) {
         this.family = family;
-        this.name = name ;
+        this.name = name;
         this.age = age;
         this.isMammal = isMammal;
     }
@@ -17,25 +18,30 @@ public class Animal {
     public String toString() {
         return family + " " + name + " " + age + " " + isMammal;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public int getAge(){
+
+    public int getAge() {
         return age;
     }
-    public boolean isMammal(){
+
+    public boolean isMammal() {
         return isMammal;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public void setAge(int age){
-        while(age < 0){
+
+    public void setAge(int age) {
+        while (age < 0) {
             this.age = age;
         }
     }
-    public void setMammal(boolean isMammal){
+
+    public void setMammal(boolean isMammal) {
         this.isMammal = isMammal;
     }
-
 }
